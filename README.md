@@ -23,8 +23,19 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+`actions` in Redux are the packets of information, usually an object, that contain an action type and a "payload" that contains some data for that action type.
+The`reducers` handle those actions and replace the store accordingly; reducers are pure functions.
+The `store` is a single JavaScript Object that contains our state for our application;
+the `store` is the single source of truth in the application in that when we make changes to our state object, we do not write over or mutate the original state object directly, but we copy the state object, modify the copy, and replace the original state with the new copy.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is global and component state is local. Redux uses the store to hold application state. Meaning any component in the app can access it as long as they connect into it. The component state can only be updated within that specific component and passed down to its children through props.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Redux-thunk is a middleware that allows you to write actions creators that return a function instead of an action. It can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. That function receives the store's dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.
 
 ## Project Set Up
 
@@ -80,9 +91,9 @@ return dispatch => {
 ```js
 [
   {
-    name: 'Brainey',
+    name: "Brainey",
     age: 200,
-    height: '5cm',
+    height: "5cm",
     id: 0
   }
 ];
@@ -113,15 +124,15 @@ Example of object created in Smurf DB:
 ```js
 [
   {
-    name: 'Brainey',
+    name: "Brainey",
     age: 200,
-    height: '5cm',
+    height: "5cm",
     id: 0
   },
   {
-    name: 'Sleepy',
+    name: "Sleepy",
     age: 200,
-    height: '5cm',
+    height: "5cm",
     id: 1
   }
 ];
@@ -173,9 +184,9 @@ Example:
 ```js
 output: [
   {
-    name: 'Sleepy',
+    name: "Sleepy",
     age: 200,
-    height: '5cm',
+    height: "5cm",
     id: 1
   }
 ];
